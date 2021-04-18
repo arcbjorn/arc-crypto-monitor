@@ -1,9 +1,9 @@
 <h1 align="center"> Arc Crypto Monitor</h1>
 
-[![Build](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/build.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=build)
-&nbsp;&nbsp;&nbsp;&nbsp; [![Lint](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/lint.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=lint)
-&nbsp;&nbsp;&nbsp;&nbsp; [![Unit tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-unit.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=test-unit)
-&nbsp;&nbsp;&nbsp;&nbsp; [![E2E tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-e2e.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=test-e2e)
+![Build](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/build.yml/badge.svg)
+&nbsp;&nbsp;&nbsp;&nbsp; ![Lint](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/lint.yml/badge.svg)
+&nbsp;&nbsp;&nbsp;&nbsp; ![Unit tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-unit.yml/badge.svg)
+&nbsp;&nbsp;&nbsp;&nbsp; ![E2E tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-e2e.yml/badge.svg)
 
 SPA for real-time monitoring of 25 cryptocoins with following functions:
 
@@ -101,3 +101,5 @@ yarn lint
 ##### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
