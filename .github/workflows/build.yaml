@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Building the project
 
 on:
   push:

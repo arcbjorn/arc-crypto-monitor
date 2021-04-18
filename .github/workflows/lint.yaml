@@ -1,4 +1,4 @@
-name: Run linting (code-style check)
+name: Linting (code-style check)
 
 on:
   push:
