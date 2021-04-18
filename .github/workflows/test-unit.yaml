@@ -1,5 +1,4 @@
-name: Unit testing
-
+name: Unit tests
 on:
   push:
     branches: [master]

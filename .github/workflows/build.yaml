@@ -1,4 +1,4 @@
-name: Building the project
+name: Build
 
 on:
   push:
