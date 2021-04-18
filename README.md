@@ -1,6 +1,4 @@
-<h2 align="center"> Arc Crypto Monitor</h1>
-
----
+<h1 align="center"> Arc Crypto Monitor</h1>
 
 [![Build](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/build.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=build)
 &nbsp;&nbsp;&nbsp;&nbsp; [![Lint](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/lint.yml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions?query=lint)
