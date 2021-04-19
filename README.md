@@ -4,6 +4,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp; [![lint](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/lint.yaml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/lint.yaml)
 &nbsp;&nbsp;&nbsp;&nbsp; [![unit tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-unit.yaml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-unit.yaml)
 &nbsp;&nbsp;&nbsp;&nbsp; [![e2e tests](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-e2e.yaml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/test-e2e.yaml)
+&nbsp;&nbsp;&nbsp;&nbsp; [![deploy](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/deploy.yaml/badge.svg)](https://github.com/arcbjorn/arc-crypto-monitor/actions/workflows/deploy.yaml)
 
 SPA for real-time monitoring of 25 cryptocoins with following functions:
 
