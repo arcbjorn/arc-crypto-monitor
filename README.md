@@ -11,9 +11,7 @@ SPA for real-time monitoring of 25 cryptocoins with following functions:
 - sort coins
 - switch between usd/eur/rub coin value
 
-### Development setup (Docker version)
-
----
+## Development setup (Docker version)
 
 **Important**: Distroless docker node.js image is used - it is experimental: app is only exposed to localhost & not to network.
 
@@ -63,9 +61,7 @@ $ docker rm --force arc-crypto-monitor
 $ docker system prune -a
 ```
 
-### Development setup (no Docker version)
-
----
+## Development setup (no Docker version)
 
 ```bash
 # Install dependencies:
@@ -98,7 +94,7 @@ yarn test:e2e
 yarn lint
 ```
 
-##### Customize configuration
+#### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
