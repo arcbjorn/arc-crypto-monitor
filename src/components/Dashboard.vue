@@ -7,11 +7,21 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { useStore } from "@/store";
+// import openConnection from "@/api/subscriptions";
 
 export default defineComponent({
   name: "Dashboard",
   props: {
     msg: String,
+  },
+  setup: () => {
+    const { state } = useStore();
+
+    console.log(state.tickers);
+  },
+  created: function () {
+    // openConnection();
   },
 });
 </script>
