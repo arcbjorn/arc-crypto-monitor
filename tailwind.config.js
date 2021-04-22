@@ -3,9 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        half: "50%",
+      },
       minWidth: {
-        "1/2": "50%",
-        "3/4": "75%",
+        half: "50%",
+        75: "75%",
       },
     },
   },

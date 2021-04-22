@@ -6,14 +6,13 @@
     "name": "arcbjorn",
     "url": "https://github.com/arcbjorn"
   },
-  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
-    "test:e2e:ci": "vue-cli-service test:e2e --headless tests/e2e/specs",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test:e2e:ci": "vue-cli-service test:e2e --headless tests/e2e/specs"
   },
   "dependencies": {
     "vue": "^3.0.0",
@@ -46,5 +45,6 @@
     "tslib": "^2.2.0",
     "typescript": "~4.1.5",
     "vue-jest": "^5.0.0-0"
-  }
+  },
+  "license": "MIT"
 }

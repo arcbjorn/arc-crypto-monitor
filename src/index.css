@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .dashboard {
+    @apply container mx-auto px-4;
+  }
+
+  table {
+    @apply mx-auto table-fixed border-separate border border-green-800 rounded-md min-w-full sm:min-w-75;
+  }
+
+  th {
+    @apply py-2 text-xl w-half;
+  }
+
+  td {
+    @apply border border-green-600 rounded-md py-2;
+  }
+}
+
+@layer base {
+  .title {
+    @apply font-bold text-4xl p-2;
+  }
+
+  .description {
+    @apply block bg-green-200 p-4 my-6 rounded-md;
+  }
+}
