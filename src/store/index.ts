@@ -1,19 +1,43 @@
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
-import { Ticker } from "@/types";
+import { Coin, ActionType } from "@/types";
 
 export interface State {
-  tickers: Ticker[];
+  coins: Coin[];
+  usdToRub: number;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
 
 export const store = createStore<State>({
   state: {
-    tickers: [],
+    coins: [
+      {
+        name: "test",
+        USD: 123,
+        EUR: 123,
+        RUB: 123,
+      },
+    ],
+    usdToRub: 0,
   },
-  mutations: {},
-  actions: {},
+  getters: {
+    coins: (state) => state.coins,
+    usdToRub: (state) => state.usdToRub,
+  },
+  mutations: {
+    setUsdToRub(state, { exchangeRate }) {
+      state.usdToRub = exchangeRate;
+    },
+    setCoins(state, { coins }) {
+      state.coins = coins;
+    },
+  },
+  actions: {
+    setUsdToRubExchangeRate({ commit }, exchangeRate) {
+      commit(ActionType.setUsdToRub, exchangeRate);
+    },
+  },
   modules: {},
 });
 

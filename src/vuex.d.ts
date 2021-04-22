@@ -1,10 +1,11 @@
 import { ComponentCustomProperties } from "vue";
 import { Store } from "vuex";
-import { Ticker } from "@/types";
+import { Coin } from "@/types";
 
 declare module "@vue/runtime-core" {
   interface State {
-    tickers: Ticker[];
+    coin: Coin[];
+    usdToRub: number;
   }
 
   // provide typings for `this.$store`
