@@ -9,7 +9,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import Table from "@/components/Table.vue";
-// import openConnection from "@/api/subscriptions";
 
 export default defineComponent({
   name: "Dashboard",
@@ -18,9 +17,6 @@ export default defineComponent({
   },
   props: {
     msg: String,
-  },
-  setup: () => {
-    // openConnection();
   },
 });
 </script>
