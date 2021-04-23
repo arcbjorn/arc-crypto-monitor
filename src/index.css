@@ -8,7 +8,7 @@
   }
 
   table {
-    @apply mx-auto table-fixed border-separate border border-green-800 rounded-md min-w-full sm:min-w-75;
+    @apply min-w-full sm:min-w-75 h-80 overflow-auto mx-auto table-fixed border-separate border border-green-800 rounded-md;
   }
 
   th {
