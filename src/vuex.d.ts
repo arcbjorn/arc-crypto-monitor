@@ -4,7 +4,7 @@ import { Coin } from "@/types";
 
 declare module "@vue/runtime-core" {
   interface State {
-    coin: Coin[];
+    coins: CoinStore;
     usdToRub: number;
   }
 
