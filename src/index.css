@@ -7,6 +7,14 @@
     @apply container mx-auto px-4;
   }
 
+  .button-group {
+    @apply bg-green-200 font-bold p-1 rounded-md select-none text-gray-700 inline-block;
+  }
+
+  button {
+    @apply rounded-md px-2 py-1 mx-1 hover:bg-white hover:shadow focus:outline-none;
+  }
+
   table {
     @apply min-w-full sm:min-w-75 h-80 overflow-auto mx-auto table-fixed border-separate border border-green-800 rounded-md;
   }

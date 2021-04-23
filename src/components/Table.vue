@@ -1,13 +1,18 @@
 <template lang="pug">
-table
-  thead
-    tr
-      th Coin
-      th Value
-  tbody
-    tr(v-for="coin, i in Object.values(coins)" :key="i")
-      td {{ coin.name }}
-      td {{ getPriceByCurrency(coin) }}
+div
+  .button-group.my-4
+    button(:class="getActiveButton(CurrencyType.EUR)") EUR
+    button(:class="getActiveButton(CurrencyType.USD)") USD
+    Button(:class="getActiveButton(CurrencyType.RUB)") RUB
+  table
+    thead
+      tr
+        th Coin
+        th Value
+    tbody
+      tr(v-for="coin, i in Object.values(coins)" :key="i")
+        td {{ coin.name }}
+        td {{ getPriceByCurrency(coin) }}
 </template>
 
 <script lang="ts">
@@ -20,6 +25,7 @@ export default defineComponent({
   data: () => {
     return {
       currency: CurrencyType.USD,
+      CurrencyType: CurrencyType,
     };
   },
   computed: {
@@ -30,6 +36,11 @@ export default defineComponent({
 
     getPriceByCurrency(coin: Coin): string {
       return `${coin[this.currency]} ${this.currency}`;
+    },
+
+    getActiveButton(btnType: CurrencyType): string {
+      if (this.currency === btnType) return "bg-white shadow";
+      else return "";
     },
   },
   beforeMount: function () {
