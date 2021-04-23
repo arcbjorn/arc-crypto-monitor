@@ -1,4 +1,4 @@
-import subsArray from "./subsHelper";
+import { subsArray } from "./subs.helpers";
 
 const apiKey =
   "35c7ef71c64f11a95f1b0ee0c58f6218af91236d8c30bd3133f9a30811dc00a3";
@@ -16,11 +16,6 @@ export const openConnection = (): WebSocket => {
         subs: subsArray ?? ["2~Coinbase~BTC~USD"],
       };
       connection.send(JSON.stringify(subRequest));
-    };
-
-    connection.onmessage = function (event: MessageEvent): void {
-      const message = event.data;
-      console.log("Received from Cryptocompare: " + message);
     };
 
     return connection;
