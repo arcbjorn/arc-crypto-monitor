@@ -1,6 +1,12 @@
 import { InjectionKey } from "vue";
 import { createStore, Store, useStore as baseUseStore } from "vuex";
-import { CoinStore, CurrencyType, MutationType, TickerPropType } from "@/types";
+import {
+  Coin,
+  CoinStore,
+  CurrencyType,
+  MutationType,
+  TickerPropType,
+} from "@/types";
 import getExchangeRate from "@/api/getExchangeRate";
 import openConnection from "@/api/tickerSubscriptions";
 import { initiateCoinStore } from "./initCoinStore";
@@ -22,16 +28,16 @@ export const store = createStore<State>({
     activeCurrency: CurrencyType.USD,
   },
   getters: {
-    getCoinsByName({ coins, searchData }): CoinStore {
-      const filteredCoinStore: CoinStore = {};
+    getCoinsByName({ coins, searchData }): Coin[] {
+      const filteredCoins: Coin[] = [];
 
       Object.entries(coins).map(([name, coin]) => {
         if (name.startsWith(searchData)) {
-          filteredCoinStore[name] = coin;
+          filteredCoins.push(coin);
         }
       });
 
-      return Object.keys(filteredCoinStore).length ? filteredCoinStore : coins;
+      return filteredCoins.length ? filteredCoins : Object.values(coins);
     },
   },
   mutations: {

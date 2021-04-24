@@ -10,7 +10,7 @@ div
         th Coin
         th Value
     tbody
-      tr(v-for="coin, i in Object.values(getCoinsByName)" :key="i")
+      tr(v-for="coin, i in getCoinsByName" :key="i")
         td {{ coin.name }}
         td {{ getPriceByCurrency(coin) }}
 </template>
