@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  .button-group.my-4
+  .button-group
     button(:class="getActiveButton(CurrencyType.EUR)" @click="setCurrency(CurrencyType.EUR)") EUR
     button(:class="getActiveButton(CurrencyType.USD)" @click="setCurrency(CurrencyType.USD)") USD
     Button(:class="getActiveButton(CurrencyType.RUB)" @click="setCurrency(CurrencyType.RUB)") RUB
