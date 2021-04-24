@@ -8,7 +8,7 @@
   }
 
   .button-group {
-    @apply bg-green-200 font-bold p-1 rounded-md select-none text-gray-700 inline-block;
+    @apply bg-green-200 font-bold p-2 rounded-md select-none text-gray-700 inline-block;
   }
 
   button {
