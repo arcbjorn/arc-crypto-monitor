@@ -27,12 +27,6 @@ export const store = createStore<State>({
 
         console.log(ticker);
 
-        // Setting the key in CoinStore to the source currency of ticker
-        if (ticker[TickerPropType.sourceCurrency]) {
-          state.coins[ticker[TickerPropType.sourceCurrency]].name =
-            ticker[TickerPropType.sourceCurrency];
-        }
-
         // Switching by the destination currency (symbol) of ticker
         switch (ticker[TickerPropType.destCurrency]) {
           case CurrencyType.EUR:
@@ -46,9 +40,10 @@ export const store = createStore<State>({
               state.coins[ticker[TickerPropType.sourceCurrency]].USD =
                 ticker[TickerPropType.price];
               // CryptoCompare does not provide exchange rate for Rubbles :-(
-              state.coins[
-                ticker[TickerPropType.sourceCurrency]
-              ].RUB = Math.trunc(ticker[TickerPropType.price] * state.usdToRub);
+              state.coins[ticker[TickerPropType.sourceCurrency]].RUB =
+                Math.trunc(
+                  ticker[TickerPropType.price] * state.usdToRub * 100
+                ) / 100;
             }
             break;
         }
