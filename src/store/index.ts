@@ -9,6 +9,7 @@ export interface State {
   coins: CoinStore;
   usdToRub: number;
   searchData: string;
+  activeCurrency: CurrencyType;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -18,6 +19,7 @@ export const store = createStore<State>({
     coins: initiateCoinStore(),
     usdToRub: 77,
     searchData: "",
+    activeCurrency: CurrencyType.USD,
   },
   getters: {
     getCoinsByName({ coins, searchData }): CoinStore {
@@ -35,6 +37,9 @@ export const store = createStore<State>({
   mutations: {
     setUsdToRub(state, exchangeRate: number): void {
       state.usdToRub = exchangeRate;
+    },
+    setActiveCurrency(state, currency: CurrencyType): void {
+      state.activeCurrency = currency;
     },
     updateSearchData(state, data: string) {
       state.searchData = data;
@@ -70,12 +75,15 @@ export const store = createStore<State>({
         if (rate) commit(MutationType.setUsdToRub, rate);
       });
     },
-    openTickerSubConnection({ commit }): void {
-      const connection = openConnection();
-      if (connection) commit(MutationType.updateCoinsByConnection, connection);
+    setActiveCurrency({ commit }, currency: CurrencyType): void {
+      commit(MutationType.setActiveCurrency, currency);
     },
     updateSearchData({ commit }, data: string): void {
       commit(MutationType.updateSearchData, data);
+    },
+    openTickerSubConnection({ commit }): void {
+      const connection = openConnection();
+      if (connection) commit(MutationType.updateCoinsByConnection, connection);
     },
   },
   modules: {},

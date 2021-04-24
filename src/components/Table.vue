@@ -5,10 +5,7 @@ div
       .search-box
         Icon(name="search").ml-4
         input.search-input(v-model="searchData" @input="setSearch" type="text" placeholder="Search")
-    .button-group
-      button(:class="getActiveButton(CurrencyType.EUR)" @click="setCurrency(CurrencyType.EUR)") EUR
-      button(:class="getActiveButton(CurrencyType.USD)" @click="setCurrency(CurrencyType.USD)") USD
-      button(:class="getActiveButton(CurrencyType.RUB)" @click="setCurrency(CurrencyType.RUB)") RUB
+    CurrencyButtonGroup
   table
     thead
       tr
@@ -23,22 +20,27 @@ div
 <script lang="ts">
 import { defineComponent } from "vue";
 import Icon from "@/components/Icon.vue";
-import { mapActions, mapGetters } from "vuex";
+import CurrencyButtonGroup from "@/components/CurrencyButtonGroup.vue";
+import { mapActions, mapGetters, mapState } from "vuex";
 import { Coin, CurrencyType } from "@/types";
+import { State } from "@/store";
 
 export default defineComponent({
   name: "Table",
   components: {
     Icon,
+    CurrencyButtonGroup,
   },
   data: () => {
     return {
-      currency: CurrencyType.USD,
       searchData: "",
-      CurrencyType: CurrencyType,
     };
   },
   computed: {
+    ...mapState({
+      // using object syntax, because linter argues - typisation is not deep
+      activeCurrency: (state): CurrencyType => (state as State).activeCurrency,
+    }),
     ...mapGetters(["getCoinsByName"]),
   },
   methods: {
@@ -49,16 +51,7 @@ export default defineComponent({
     ]),
 
     getPriceByCurrency(coin: Coin): string {
-      return `${coin[this.currency]} ${this.currency}`;
-    },
-
-    getActiveButton(btnType: CurrencyType): string {
-      if (this.currency === btnType) return "bg-white shadow";
-      else return "";
-    },
-
-    setCurrency(btnType: CurrencyType): void {
-      this.currency = btnType;
+      return `${coin[this.activeCurrency]} ${this.activeCurrency}`;
     },
 
     setSearch() {
