@@ -8,6 +8,7 @@ import { initiateCoinStore } from "./initCoinStore";
 export interface State {
   coins: CoinStore;
   usdToRub: number;
+  searchData: string;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -16,34 +17,47 @@ export const store = createStore<State>({
   state: {
     coins: initiateCoinStore(),
     usdToRub: 77,
+    searchData: "",
+  },
+  getters: {
+    getCoinsByName({ coins, searchData }): CoinStore {
+      const filteredCoinStore: CoinStore = {};
+
+      Object.entries(coins).map(([name, coin]) => {
+        if (name.startsWith(searchData)) {
+          filteredCoinStore[name] = coin;
+        }
+      });
+
+      return Object.keys(filteredCoinStore).length ? filteredCoinStore : coins;
+    },
   },
   mutations: {
-    setUsdToRub(state, exchangeRate) {
+    setUsdToRub(state, exchangeRate: number): void {
       state.usdToRub = exchangeRate;
     },
-    updateCoinsByConnection(state, connection) {
+    updateSearchData(state, data: string) {
+      state.searchData = data;
+    },
+    updateCoinsByConnection({ coins, usdToRub }, connection: WebSocket): void {
       connection.onmessage = function (event: MessageEvent): void {
         const ticker = JSON.parse(event.data);
-
-        console.log(ticker);
 
         // Switching by the destination currency (symbol) of ticker
         switch (ticker[TickerPropType.destCurrency]) {
           case CurrencyType.EUR:
             if (ticker[TickerPropType.price]) {
-              state.coins[ticker[TickerPropType.sourceCurrency]].EUR =
+              coins[ticker[TickerPropType.sourceCurrency]].EUR =
                 ticker[TickerPropType.price];
             }
             break;
           case CurrencyType.USD:
             if (ticker[TickerPropType.price]) {
-              state.coins[ticker[TickerPropType.sourceCurrency]].USD =
+              coins[ticker[TickerPropType.sourceCurrency]].USD =
                 ticker[TickerPropType.price];
               // CryptoCompare does not provide exchange rate for Rubbles :-(
-              state.coins[ticker[TickerPropType.sourceCurrency]].RUB =
-                Math.trunc(
-                  ticker[TickerPropType.price] * state.usdToRub * 100
-                ) / 100;
+              coins[ticker[TickerPropType.sourceCurrency]].RUB =
+                Math.trunc(ticker[TickerPropType.price] * usdToRub * 100) / 100;
             }
             break;
         }
@@ -59,6 +73,9 @@ export const store = createStore<State>({
     openTickerSubConnection({ commit }): void {
       const connection = openConnection();
       if (connection) commit(MutationType.updateCoinsByConnection, connection);
+    },
+    updateSearchData({ commit }, data: string): void {
+      commit(MutationType.updateSearchData, data);
     },
   },
   modules: {},

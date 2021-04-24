@@ -6,6 +6,7 @@ declare module "@vue/runtime-core" {
   interface State {
     coins: CoinStore;
     usdToRub: number;
+    searchData: string;
   }
 
   // provide typings for `this.$store`

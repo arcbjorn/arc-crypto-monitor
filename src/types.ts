@@ -28,9 +28,11 @@ export enum CurrencyType {
 export enum MutationType {
   setUsdToRub = "setUsdToRub",
   updateCoinsByConnection = "updateCoinsByConnection",
+  updateSearchData = "updateSearchData",
 }
 
 export enum ActionType {
   getUsdToRubRate = "getUsdToRubRate",
   openTickerSubConnection = "openTickerSubConnection",
+  updateSearchData = "updateSearchData",
 }
