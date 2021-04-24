@@ -2,9 +2,7 @@
 div
   .table-header
     div
-      .search-box
-        Icon(name="search").ml-4
-        input.search-input(v-model="searchData" @input="setSearch" type="text" placeholder="Search")
+      Search
     CurrencyButtonGroup
   table
     thead
@@ -19,8 +17,8 @@ div
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Icon from "@/components/Icon.vue";
 import CurrencyButtonGroup from "@/components/CurrencyButtonGroup.vue";
+import Search from "@/components/Search.vue";
 import { mapActions, mapGetters, mapState } from "vuex";
 import { Coin, CurrencyType } from "@/types";
 import { State } from "@/store";
@@ -28,13 +26,8 @@ import { State } from "@/store";
 export default defineComponent({
   name: "Table",
   components: {
-    Icon,
     CurrencyButtonGroup,
-  },
-  data: () => {
-    return {
-      searchData: "",
-    };
+    Search,
   },
   computed: {
     ...mapState({
@@ -44,18 +37,10 @@ export default defineComponent({
     ...mapGetters(["getCoinsByName"]),
   },
   methods: {
-    ...mapActions([
-      "getUsdToRubRate",
-      "openTickerSubConnection",
-      "updateSearchData",
-    ]),
+    ...mapActions(["getUsdToRubRate", "openTickerSubConnection"]),
 
     getPriceByCurrency(coin: Coin): string {
       return `${coin[this.activeCurrency]} ${this.activeCurrency}`;
-    },
-
-    setSearch() {
-      this.updateSearchData(this.searchData);
     },
   },
   beforeMount: function () {
