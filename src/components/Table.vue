@@ -1,9 +1,9 @@
 <template lang="pug">
 div
   .button-group.my-4
-    button(:class="getActiveButton(CurrencyType.EUR)") EUR
-    button(:class="getActiveButton(CurrencyType.USD)") USD
-    Button(:class="getActiveButton(CurrencyType.RUB)") RUB
+    button(:class="getActiveButton(CurrencyType.EUR)" @click="setCurrency(CurrencyType.EUR)") EUR
+    button(:class="getActiveButton(CurrencyType.USD)" @click="setCurrency(CurrencyType.USD)") USD
+    Button(:class="getActiveButton(CurrencyType.RUB)" @click="setCurrency(CurrencyType.RUB)") RUB
   table
     thead
       tr
@@ -42,13 +42,14 @@ export default defineComponent({
       if (this.currency === btnType) return "bg-white shadow";
       else return "";
     },
+
+    setCurrency(btnType: CurrencyType): void {
+      this.currency = btnType;
+    },
   },
   beforeMount: function () {
     this.getUsdToRubRate();
     this.openTickerSubConnection();
-  },
-  mounted: function () {
-    console.log(this.coins);
   },
 });
 </script>
