@@ -8,9 +8,14 @@
 
 SPA for real-time monitoring of 25 cryptocoins with following functions:
 
-- search / filter coins by ticker & name
-- sort coins
-- switch between usd/eur/rub coin value
+- search / filter coins by name
+- sort coins by name & value of currenly displayed currency (usd/eur/rub)
+- switch between currency (usd/eur/rub) coin value
+
+Plans for the future:
+
+- add more unit & end-to-end tests
+- setup integration testing & add tests for getExchangeRate and tickerSubscriptions modules (api)
 
 ## Development setup (Docker version)
 
