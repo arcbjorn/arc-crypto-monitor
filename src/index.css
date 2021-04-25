@@ -28,7 +28,19 @@
   }
 
   table {
-    @apply min-w-full sm:min-w-75 h-80 overflow-auto mx-auto table-fixed border-separate border border-green-800 rounded-md;
+    @apply min-w-full sm:min-w-75 mx-auto table-fixed border-separate border border-green-800 rounded-md;
+  }
+
+  thead {
+    @apply flex w-full;
+  }
+
+  tr {
+    @apply flex w-full;
+  }
+
+  tbody {
+    @apply block max-h-60 overflow-auto;
   }
 
   th {
@@ -36,7 +48,7 @@
   }
 
   td {
-    @apply border border-green-600 rounded-md py-2;
+    @apply border border-green-600 rounded-md py-2 m-1 w-half;
   }
 }
 
