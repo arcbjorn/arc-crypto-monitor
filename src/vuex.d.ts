@@ -8,6 +8,7 @@ declare module "@vue/runtime-core" {
     usdToRub: number;
     searchData: string;
     activeCurrency: CurrencyType;
+    activeSortType: SortType;
   }
 
   // provide typings for `this.$store`

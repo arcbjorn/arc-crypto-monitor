@@ -8,7 +8,7 @@
   }
 
   .table-header {
-    @apply flex justify-around;
+    @apply flex justify-evenly flex-wrap;
   }
 
   .search-box {
@@ -20,7 +20,7 @@
   }
 
   .button-group {
-    @apply my-4 bg-green-200 font-bold p-2 rounded-md select-none text-gray-700 inline-block;
+    @apply my-4 bg-green-200 font-bold p-2 rounded-md select-none text-gray-700 flex items-center;
   }
 
   button {

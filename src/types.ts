@@ -25,11 +25,20 @@ export enum CurrencyType {
   RUB = "RUB",
 }
 
+export enum SortType {
+  NONE = "NONE",
+  NAME_ASC = "NAME_ASC",
+  NAME_DES = "NAME_DES",
+  VALUE_ASC = "VALUE_ASC",
+  VALUE_DES = "VALUE_DES",
+}
+
 export enum MutationType {
   setUsdToRub = "setUsdToRub",
   updateCoinsByConnection = "updateCoinsByConnection",
   updateSearchData = "updateSearchData",
   setActiveCurrency = "setActiveCurrency",
+  setActiveSortType = "setActiveSortType",
 }
 
 export enum ActionType {
@@ -37,8 +46,9 @@ export enum ActionType {
   openTickerSubConnection = "openTickerSubConnection",
   updateSearchData = "updateSearchData",
   setActiveCurrency = "setActiveCurrency",
+  setActiveSortType = "setActiveSortType",
 }
 
 export enum GetterType {
-  getCoinsByName = "getCoinsByName",
+  coins = "coins",
 }

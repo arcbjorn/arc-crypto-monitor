@@ -5,6 +5,7 @@ import {
   CoinStore,
   CurrencyType,
   MutationType,
+  SortType,
   TickerPropType,
 } from "@/types";
 import getExchangeRate from "@/api/getExchangeRate";
@@ -16,6 +17,7 @@ export interface State {
   usdToRub: number;
   searchData: string;
   activeCurrency: CurrencyType;
+  activeSortType: SortType;
 }
 
 export const key: InjectionKey<Store<State>> = Symbol();
@@ -26,18 +28,39 @@ export const store = createStore<State>({
     usdToRub: 77,
     searchData: "",
     activeCurrency: CurrencyType.USD,
+    activeSortType: SortType.NONE,
   },
   getters: {
-    getCoinsByName({ coins, searchData }): Coin[] {
-      const filteredCoins: Coin[] = [];
+    coins({ coins, searchData, activeCurrency, activeSortType }): Coin[] {
+      let filteredCoins: Coin[] = [];
 
-      Object.entries(coins).map(([name, coin]) => {
-        if (name.startsWith(searchData)) {
-          filteredCoins.push(coin);
+      if (searchData) {
+        Object.entries(coins).map(([name, coin]) => {
+          if (name.startsWith(searchData)) {
+            filteredCoins.push(coin);
+          }
+        });
+      } else {
+        filteredCoins = Object.values(coins);
+      }
+
+      if (activeSortType !== SortType.NONE)
+        switch (activeSortType) {
+          case SortType.NAME_ASC:
+            filteredCoins.sort((a, b) => a.name.localeCompare(b.name));
+            break;
+          case SortType.NAME_DES:
+            filteredCoins.sort((a, b) => b.name.localeCompare(a.name));
+            break;
+          case SortType.VALUE_ASC:
+            filteredCoins.sort((a, b) => a[activeCurrency] - b[activeCurrency]);
+            break;
+          case SortType.VALUE_DES:
+            filteredCoins.sort((a, b) => b[activeCurrency] - a[activeCurrency]);
+            break;
         }
-      });
 
-      return filteredCoins.length ? filteredCoins : Object.values(coins);
+      return filteredCoins;
     },
   },
   mutations: {
@@ -46,6 +69,9 @@ export const store = createStore<State>({
     },
     setActiveCurrency(state, currency: CurrencyType): void {
       state.activeCurrency = currency;
+    },
+    setActiveSortType(state, sortType: SortType): void {
+      state.activeSortType = sortType;
     },
     updateSearchData(state, data: string) {
       state.searchData = data;
@@ -83,6 +109,9 @@ export const store = createStore<State>({
     },
     setActiveCurrency({ commit }, currency: CurrencyType): void {
       commit(MutationType.setActiveCurrency, currency);
+    },
+    setActiveSortType({ commit }, sortType: SortType): void {
+      commit(MutationType.setActiveSortType, sortType);
     },
     updateSearchData({ commit }, data: string): void {
       commit(MutationType.updateSearchData, data);
