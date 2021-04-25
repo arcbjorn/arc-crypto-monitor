@@ -1,7 +1,8 @@
 <template lang="pug">
-.search-box
-  Icon(name="search").ml-4
-  input.search-input(v-model="searchData" @input="setSearch" type="text" placeholder="Search")
+div
+  .search-box
+    Icon(name="search").ml-4
+    input.search-input(v-model="searchData" @input="setSearch" type="text" placeholder="Search")
 </template>
 
 <script lang="ts">
@@ -14,6 +15,7 @@ import Icon from "@/components/Icon.vue";
 export default defineComponent({
   name: "Search",
   components: {
+    // using Icon Component is temprorary, icon font is preferred
     Icon,
   },
   data: () => {
