@@ -17,7 +17,7 @@ Plans for the future:
 - add more unit & end-to-end tests
 - setup integration testing & add tests for getExchangeRate and tickerSubscriptions modules (api)
 
-## Checkout the demo [here](arc-crypto-monitor.netlify.app).
+## Checkout the demo [here](https://arc-crypto-monitor.netlify.app).
 
 ### Development setup (Docker version)
 
