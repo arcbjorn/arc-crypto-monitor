@@ -6,6 +6,7 @@
     "name": "arcbjorn",
     "url": "https://github.com/arcbjorn"
   },
+  "homepage": "https://arcbjorn.github.io/arc-crypto-monitor/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
