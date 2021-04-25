@@ -1,10 +1,7 @@
 // String manipilations to compose correct request parameters
 
-// Required coins, not all are updated properly on CryptoCompare
-// const requiredCoins =
-//   "btc, eth, doge, xrp, trx, xlm, bch, bsv, neo, ada, awc, go, xtz, qtum, smart, ltc, xmr, vet, vtho, dent, eos, dcn, nexo, tpay, zrx, usdc, usdt, bnb, tnt, rex, rep, rcn, kin";
-
-const coins = "btc, eth, xrp, xlm, bch, ada, xtz, ltc, eos, zrx, rep";
+const coins =
+  "btc, eth, xrp, xlm, bch, ada, xtz, ltc, eos, zrx, link, etc, fil, celo, mana, omg, crv, aave, band, bat, grt, matic, algo, sushi, ankr";
 
 export const coinsArray: string[] = coins.toUpperCase().split(", ");
 
