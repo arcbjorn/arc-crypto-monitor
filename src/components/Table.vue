@@ -20,7 +20,7 @@ import { defineComponent } from "vue";
 import CurrencyButtonGroup from "@/components/CurrencyButtonGroup.vue";
 import Search from "@/components/Search.vue";
 import { mapActions, mapGetters, mapState } from "vuex";
-import { Coin, CurrencyType } from "@/types";
+import { ActionType, Coin, CurrencyType, GetterType } from "@/types";
 import { State } from "@/store";
 
 export default defineComponent({
@@ -34,10 +34,13 @@ export default defineComponent({
       // using object syntax, because linter argues - typisation is not deep
       activeCurrency: (state): CurrencyType => (state as State).activeCurrency,
     }),
-    ...mapGetters(["getCoinsByName"]),
+    ...mapGetters([GetterType.getCoinsByName]),
   },
   methods: {
-    ...mapActions(["getUsdToRubRate", "openTickerSubConnection"]),
+    ...mapActions([
+      ActionType.getUsdToRubRate,
+      ActionType.openTickerSubConnection,
+    ]),
 
     getPriceByCurrency(coin: Coin): string {
       return `${coin[this.activeCurrency]} ${this.activeCurrency}`;

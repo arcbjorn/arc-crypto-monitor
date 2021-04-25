@@ -38,3 +38,7 @@ export enum ActionType {
   updateSearchData = "updateSearchData",
   setActiveCurrency = "setActiveCurrency",
 }
+
+export enum GetterType {
+  getCoinsByName = "getCoinsByName",
+}

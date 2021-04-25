@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { State } from "@/store";
-import { CurrencyType } from "@/types";
+import { ActionType, CurrencyType } from "@/types";
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import Icon from "@/components/Icon.vue";
@@ -23,11 +23,12 @@ export default defineComponent({
   },
   computed: {
     ...mapState({
+      // using object syntax, because linter argues - typisation is not deep
       activeCurrency: (state): CurrencyType => (state as State).activeCurrency,
     }),
   },
   methods: {
-    ...mapActions(["updateSearchData"]),
+    ...mapActions([ActionType.updateSearchData]),
     setSearch() {
       this.updateSearchData(this.searchData);
     },

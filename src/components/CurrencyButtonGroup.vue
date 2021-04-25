@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { State } from "@/store";
-import { CurrencyType } from "@/types";
+import { CurrencyType, ActionType } from "@/types";
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 
@@ -20,11 +20,12 @@ export default defineComponent({
   },
   computed: {
     ...mapState({
+      // using object syntax, because linter argues - typisation is not deep
       activeCurrency: (state): CurrencyType => (state as State).activeCurrency,
     }),
   },
   methods: {
-    ...mapActions(["setActiveCurrency"]),
+    ...mapActions([ActionType.setActiveCurrency]),
 
     getActiveButton(btnType: CurrencyType): string {
       if (this.activeCurrency === btnType) return "bg-white shadow";
